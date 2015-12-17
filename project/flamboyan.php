@@ -37,7 +37,9 @@
                   <li>
                     <a href="#">Jasmine</a>
                   </li>
-
+                  <li>
+                    <a href="#">Tambah Wisma</a>
+                  </li>
                 </ul>
               </li>
           </ul>
@@ -101,12 +103,16 @@
                     <td><?php echo $row['STATUS_KAMAR'];?></td>
                     <td>
                       <div>
+
                         <form method="GET" action="<?php $_PHP_SELF ?>"> 
                           <?php 
-                          if ($row['STATUS_KAMAR'=='KOSONG'])
-                            $tombol= "btn btn-primary active";
-                          else  $tombol= "btn btn-primary";?>
-                          <button type='submit' class='$tombol' name='pilih_kam' value="<?php echo $row['ID_KAMAR'];?>">Pilih</button>
+
+                          if (strcmp($row['STATUS_KAMAR'],"KOSONG")==1)
+                            $tombol= "btn btn-primary";
+                          else  $tombol= "btn btn-primary disabled";
+                          echo '
+                          <button type="submit" class="'.$tombol.'" name="pilih_kam" value="'.$row['ID_KAMAR'].'">Pilih</button>';
+                          ?>
                         </form>
                       </div>
                     </td>

@@ -86,14 +86,14 @@
                     <td>
                       <div>
                         <form method="GET" action="<?php $_PHP_SELF ?>"> 
-                          <button type='submit'  name='id_peg' value="<?php echo $row['id_kamar'];?>">Edit</button>
+                          <button type='submit'  name='id_kam' value="<?php echo $row['id_kamar'];?>">Edit</button>
                         </form>
                       </div>
                     </td>
                     <td> 
                       <div>
                         <form method="GET" action="<?php $_PHP_SELF ?>"> 
-                          <button type='submit'  name='del_peg' value="<?php echo $row['id_kamar'];?>">Delete</button>
+                          <button type='submit'  name='del_kam' value="<?php echo $row['id_kamar'];?>">Delete</button>
                         </form>
                       </div>
                     </td>
@@ -102,6 +102,29 @@
                   }
                   ?>
               </tbody>
+
+               <?php
+                include "coba.php";
+
+                if( isset($_GET['del_kam']))
+                {
+                  $idkam = $_GET['del_kam'];
+                  echo ' 
+                     <form method="POST" action="delpegawai.php">
+                      <div class="controls" style="display:none;">
+                        <input class="form-control" type="text" name="id_peg" value="'.$idpeg.'">
+                      </div>
+                      <div class="alert alert-dismissable">
+                        <center><b> Melanjutkan Penghapusan ? </b> <br><br>
+                        <button type="submit" style="width:70px"> Ya </button> &nbsp &nbsp &nbsp
+                        <button type="button" data-dismiss="alert" submit style="width:70px"> Tidak </button> 
+                        </center>
+                      </div>
+                    </form>
+                  ';
+                }
+             ?>
+
             </table>
             <div class="pull-right"> 
               <a href="formtmbhpeg.php">  <button class="btn">TAMBAH BARU</button> 

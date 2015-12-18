@@ -1,16 +1,4 @@
-<!doctype html>
-
-<html>
-  
-  <head>
-    <title>.:INFORMASI WISMA TAMU:.</title>
-    <meta name="viewport" content="width=device-width">
-     <link rel="stylesheet" type="text/css" href="cssku.css">
-    <link rel="stylesheet" href="css/bootstrap.min.css">
-    <script type="text/javascript" src="aset/jquery.min.js"></script>
-    <script type="text/javascript" src="js/bootstrap.min.js"></script>
-  
-  </head>
+<?php include("template/header.php");?>
   
   <body style="background-image: url(back.jpg); background-attachment:fixed; " >
     <div class="container">
@@ -23,7 +11,7 @@
         </h3>
           <ul class="nav nav-tabs" >
               <li >
-                  <a href="#" style="color:white"> Home</a>
+                  <a href="home.php" style="color:white"> Home</a>
               </li>
               <li class="active"> 
                 <a href="#" data-toggle="dropdown" class="dropdown-toggle" style="color:black">Reservasi <b class="caret"></b></a>
@@ -59,6 +47,8 @@
       <div class="col-md-12" >
         <div class="panel panel-default" style="background-color:#eaeae1">
           <div class="panel-body">
+            <h3 align="center">WISMA TAMU FLAMBOYAN</h3>
+            
             <?php
                if(isset($_GET['status']) && $_GET['status']=="sukses")
                {
@@ -94,6 +84,7 @@
                             order by kamar.id_kamar";
                   $stid = oci_parse($conn, $query);
                   oci_execute($stid);
+
                   while ($row = oci_fetch_array($stid)) 
                   {?>
 
@@ -108,8 +99,8 @@
                           <?php 
 
                           if (strcmp($row['STATUS_KAMAR'],"KOSONG")==1)
-                            $tombol= "btn btn-primary";
-                          else  $tombol= "btn btn-primary disabled";
+                            $tombol= "btn btn-primary disabled";
+                          else  $tombol= "btn btn-primary";
                           echo '
                           <button type="submit" class="'.$tombol.'" name="pilih_kam" value="'.$row['ID_KAMAR'].'">Pilih</button>';
                           ?>
@@ -118,8 +109,11 @@
                     </td>
                     <td>
                       <div>
-                        <form method="GET" action="<?php $_PHP_SELF ?>"> 
-                          <button type='submit' class="btn btn-primary" name='edit_kam' value="<?php echo $row['ID_KAMAR'];?>">Edit</button>
+                        <form method="POST" action="update.php"> 
+                          <center>
+                          <button type="submit" class="btn btn-primary">Edit</button>
+                          <input type="hidden" name="id_kam" value="<?php echo $row['ID_KAMAR'];?>"> </input>
+                          </center>
                         </form>
                       </div>
                     </td>
@@ -131,6 +125,7 @@
                       </div>
                     </td>
 
+                       
                   <?php
                   }
                   ?>
@@ -140,6 +135,7 @@
             <div class="pull-right"> 
               <a href="#">  <button class="btn">TAMBAH BARU</button> 
             </a> </div>
+            
             <div> 
               <a href="#">  <button class="btn">KEMBALI</button> 
             </a> </div>
@@ -165,6 +161,59 @@
                     </form>
                   ';
                 }
+                 /*               
+                    if( isset($_GET['edit_kam']))
+                      {
+
+                        $idkamar = $_GET['edit_kam'];
+                        $query1 = "select kamar.id_jenis, jenis_kamar.nama_jenis, kamar.status_kamar
+                                  from kamar , wisma, jenis_kamar
+                                  where kamar.id_wisma=wisma.id_wisma and kamar.id_jenis= jenis_kamar.id_jenis and wisma.nama_wisma='Flamboyan'
+                                        and kamar.id_kamar='edit_kam'
+                                  order by kamar.id_kamar";
+                        $stid = oci_parse($conn, $query1);
+                        oci_execute($stid);
+                        $row = oci_fetch_array($stid);
+                        $namajenis = $row['NAMA_JENIS'];
+                        $idjenis = $row['ID_JENIS'];
+                        $statuskam = $row['STATUS_KAMAR'];
+
+                        echo '
+                        <div class="panel panel-default">
+                          <div class="panel-body">
+                            <form method="POST" action="update_kamar.php">
+                              <div class="form-group">
+                                <label class="control-label">ID KAMAR : '.$idkamar.'</label>
+                                <div class="controls" style="display:none;">
+                                  <input class="form-control" type="text" name="id_peg" value="'.$idkamar.'">
+                                </div>
+                              </div>
+                              <div class="form-group">
+                                <label class="control-label">NAMA JENIS</label>
+                                <div class="controls">
+                                  <input class="form-control" type="text" name="nama_jenis" value="'.$namajenis.'">
+                                </div>
+                              </div>
+                              <div class="form-group">
+                                <label class="control-label">STATUS</label>
+                                  <div class="controls">
+                                    <input class="form-control" type="text" name="status_kamar" value="'.$statuskam.'">
+                                  </div>
+                                </div>
+                                <div class="pull-right">
+                                  <input class="btn btn-success" value="Update" type="submit">
+                                </div>
+                                <div class="pull-right">
+                                  <button class="btn btn-success" href="flamboyan.php">Batal</button>
+                                </div>
+                              </div>
+                            </form>
+                          </div>
+                        </div>';
+                        
+                        }*/
+                      
+              //  else 
              ?>
             
           </div>

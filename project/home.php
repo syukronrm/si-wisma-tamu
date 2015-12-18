@@ -52,13 +52,7 @@
             <br><br>
           </div>
         </div>
-      </div>
+     
       <!-- Site footer -->
-      <div class="footer" style="color:white">
-        <center><p>&copy; TC 14</p></center>
-      </div>
-    </div>
+     <?php include("template/footer.php");?>
     <!-- /container -->
-  </body>
-
-</html>

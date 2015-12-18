@@ -13,7 +13,7 @@
 	//$ID=$_POST['ID'];
 	if($row != NULL){
 		if ($pas=="FPBASDAT"){
-		  header("Location: home.html");
+		  header("Location: home.php");
 		}
 		else {
 		  header("Location: login.php?status=gagal");

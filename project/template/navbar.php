@@ -20,9 +20,19 @@
                 <ul class="dropdown-menu">
                   <li><a href="flamboyan.php">Flamboyan</a></li>
                   <li><a href="bougenville.php">Bougenville</a></li>
-                  <li><a href="jasmine.php">Jasmine</a></li> 
+                  <li><a href="jasmine.php">Jasmine</a></li>
                 </ul>
               </li>
+              <li class="dropdown">
+                <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Data<span class="caret"></span></a>
+                <ul class="dropdown-menu">
+                  <li><a href="wisma.php">Wisma</a></li>
+                  <li><a href="pengunjung.php">Pengunjung</a></li>
+                </ul>
+              </li>
+            </ul>
+            <ul class="nav navbar-nav navbar-right">
+              <li> <a href="login.php"> Login </a> </li>
             </ul>
           </div><!--/.nav-collapse -->
         </div>

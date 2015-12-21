@@ -1,8 +1,7 @@
 <!DOCTYPE HTML>
-
 <html>
   <head>
-    <title>.:INFORMASI WISMA TAMU:.</title>
+    <title>Sistem Informasi Wisma Tamu</title>
     <meta name="viewport" content="width=device-width">
         <link rel="stylesheet" href="css/bootstrap.min.css">
          <link rel="stylesheet" type="text/css" href="cssku.css">

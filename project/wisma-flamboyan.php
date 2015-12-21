@@ -37,7 +37,9 @@
               include 'coba.php';
               $query = "select kamar.id_kamar, jenis_kamar.nama_jenis, kamar.status_kamar
                         from kamar , wisma, jenis_kamar
-                        where kamar.id_wisma=wisma.id_wisma and kamar.id_jenis= jenis_kamar.id_jenis and wisma.nama_wisma='Flamboyan'
+                        where kamar.id_wisma=wisma.id_wisma
+                        and kamar.id_jenis= jenis_kamar.id_jenis
+                        and wisma.nama_wisma='Flamboyan'
                         order by kamar.id_kamar";
               $stid = oci_parse($conn, $query);
               oci_execute($stid);
@@ -50,25 +52,27 @@
                 <td><?php echo $row['STATUS_KAMAR'];?></td>
                 <td>
                   <div>
-                    <form method="GET" action="<?php $_PHP_SELF ?>">
+                    <form method="POST" action="wisma-pilih.php">
                       <?php
                       if (strcmp($row['STATUS_KAMAR'],"KOSONG")==1)
                         $tombol= "btn btn-primary disabled";
-                      else  $tombol= "btn btn-primary";
+                      else
+                        $tombol= "btn btn-primary";
                       echo '
                       <center>
-                        <button type="submit" class="'.$tombol.'" name="pilih_kam" value="'.$row['ID_KAMAR'].'">Pilih</button>
-                      </center>';
+                        <button type="submit" class="'.$tombol.'" name="id_kamar" value="'.$row['ID_KAMAR'].'">Pilih</button>
+                      </center>
+                      ';
                       ?>
                     </form>
                   </div>
                 </td>
                 <td>
                   <div>
-                    <form method="POST" action="update.php">
+                    <form method="POST" action="wisma-update.php">
                       <center>
-                      <button type="submit" class="btn btn-primary">Edit</button>
-                      <input type="hidden" name="id_kam" value="<?php echo $row['ID_KAMAR'];?>"> </input>
+                        <button type="submit" class="btn btn-primary">Edit</button>
+                        <input type="hidden" name="id_kam" value="<?php echo $row['ID_KAMAR'];?>"> </input>
                       </center>
                     </form>
                   </div>
@@ -76,7 +80,9 @@
                 <td>
                   <div>
                     <form method="GET" action="<?php $_PHP_SELF ?>">
-                      <button type='submit' class="btn btn-primary" name='del_kam' value="<?php echo $row['ID_KAMAR'];?>">Delete</button>
+                      <center>
+                        <button type='submit' class="btn btn-primary" name='del_kam' value="<?php echo $row['ID_KAMAR'];?>">Delete</button>
+                      </center>
                     </form>
                   </div>
                 </td>

@@ -9,11 +9,6 @@
     <input type="text" id="inputEmail" class="form-control" placeholder="ID Petugas" name="ID" required autofocus>
     <label for="inputPassword" class="sr-only">Password</label>
     <input type="password" id="inputPassword" class="form-control" placeholder="Password" name="pass" required>
-    <div class="checkbox">
-      <label>
-        <input type="checkbox" value="remember-me"> Remember me
-      </label>
-    </div>
     <button class="btn btn-lg btn-primary btn-block" type="submit">Sign in</button>
   </form>
 </div> <!-- /container -->
@@ -61,13 +56,13 @@
     <button type='button' class='close' data-dismiss='alert'>&times;</button>
     <center><b>Password Salah!</b></center>
     </div>";
-   } 
+   }
    else if(isset($_GET['status']) && $_GET['status']=="user_not_found"){
     echo "<div class='alert alert-dismissable alert-danger'>
     <button type='button' class='close' data-dismiss='alert'>&times;</button>
     <center><b>ID TIDAK TERDAFTAR!</b></center>
     </div>";
-   } 
+   }
 ?>
 
 <script type="text/javascript">
@@ -83,13 +78,13 @@
   function etrLogin(e) {
     var ev= (window.event) ? window.event: e;
     var key = (ev.keyCode) ? ev.keyCode : ev.which;
-    
+
     if (key == 13)
       procLogin();
   }
 
   function procLogin() {
-     
+
     document.getElementById('login_form').submit();
   }
 

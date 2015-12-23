@@ -20,14 +20,6 @@
     $no_hp = $_POST['no_hp_tamu'];
     $alamat = $_POST['alamat_tamu'];
 
-    print_r($_SESSION['id_kamar']);
-    echo $_POST['nama_tamu'];
-    echo $_POST['no_hp_tamu'];
-    echo $_POST['alamat_tamu'];
-    echo $no_hp;
-    echo $nama;
-    echo $alamat;
-
     $query1 = "insert into tamu
               values (tamu_seq.nextval ,
               '$no_hp',

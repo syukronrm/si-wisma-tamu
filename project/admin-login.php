@@ -1,5 +1,5 @@
 <?php include("template/header.php");?>
-<?php include("template/navbar.php");?>
+<?php //include("template/navbar.php");?>
 
 
 <div class="container">
@@ -8,7 +8,12 @@
     <label for="inputEmail" class="sr-only">ID Petugas</label>
     <input type="text" id="inputEmail" class="form-control" placeholder="ID Petugas" name="ID" required autofocus>
     <label for="inputPassword" class="sr-only">Password</label>
-    <input type="password" id="inputPassword" class="form-control" placeholder="Password" name="pass" required>
+    <input type="password" id="inputPassword" class="form-control" placeholder="Password" name="pass" onkeypress="capLock(event)" required>
+    <center>
+    <div id="divCaps"
+          style="visibility:hidden;margin-top:4px;color:red;font-weight:bold;">Caps Lock is on !
+    </div>
+    </center>
     <button class="btn btn-lg btn-primary btn-block" type="submit">Sign in</button>
   </form>
 </div> <!-- /container -->

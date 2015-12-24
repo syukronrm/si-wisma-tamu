@@ -13,13 +13,13 @@
 	//$ID=$_POST['ID'];
 	if($row != NULL){
 		if ($pas=="FPBASDAT"){
-		  header("Location: home.php");
+		  header("Location: index.php");
 		}
 		else {
-		  header("Location: login.php?status=gagal");
+		  header("Location: admin-login.php?status=gagal");
 		}
 	}
 	else {
-	  header("Location: login.php?status=user_not_found");
+	  header("Location: admin-login.php?status=user_not_found");
 	}
 ?>

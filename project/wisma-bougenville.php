@@ -10,7 +10,7 @@
   <div class="row" style="padding-top:20px;">
     <div class="panel panel-default" style="background-color:#eee">
       <div class="panel-body">
-        <h3 align="center">WISMA TAMU FLAMBOYAN</h3>
+        <h3 align="center">WISMA TAMU BOUGENVILLE</h3>
         <?php
           if(isset($_GET['status']) && $_GET['status']=="sukses")
           {

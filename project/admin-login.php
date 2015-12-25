@@ -6,9 +6,9 @@
   <form class="form-signin" action="ceklogin.php" method="POST">
     <h2 class="form-signin-heading">Please sign in</h2>
     <label for="inputEmail" class="sr-only">ID Petugas</label>
-    <input type="text" id="inputEmail" class="form-control" placeholder="ID Petugas" name="ID" required autofocus>
+    <input type="text" class="form-control" placeholder="ID Petugas" name="ID" required autofocus>
     <label for="inputPassword" class="sr-only">Password</label>
-    <input type="password" id="inputPassword" class="form-control" placeholder="Password" name="pass" onkeypress="capLock(event)" required>
+    <input type="password" class="form-control" placeholder="Password" name="pass" onkeypress="capLock(event)" required>
     <center>
     <div id="divCaps"
           style="visibility:hidden;margin-top:4px;color:red;font-weight:bold;">Caps Lock is on !

@@ -12,6 +12,7 @@
     $_SESSION['id_kamar'] = $_POST['id_kamar'];
   }
 
+
   if (isset($_POST['nama_tamu'])
       and isset($_POST['no_hp_tamu'])
       and isset($_POST['alamat_tamu']))
@@ -21,7 +22,7 @@
     $alamat = $_POST['alamat_tamu'];
 
     $query1 = "insert into tamu
-              values (tamu_seq.nextval ,
+              values ('TA'||to_char(tamu_seq.nextval,'FM000') ,
               '$no_hp',
               '$nama',
               '$alamat')";
@@ -43,9 +44,9 @@
               tgl_transaksi,
               tgl_checkin)
               values
-              (transaksi_sewakamar_seq.nextval,
+              ('TR'||to_char(transaksi_sewakamar_seq.nextval,'FM000'),
               '".$row_query_id_tamu['ID_TAMU'] ."',
-              '1',
+              'PE001',
               to_date('".date("d-m-Y")."','dd-mm-yyyy'),
               to_date('".date("d-m-Y")."','dd-mm-yyyy'))";
     $query2_parse = oci_parse($conn, $query2);
@@ -96,10 +97,10 @@
     </div>
     <div class="form-group">
       <div class="col-sm-offset-2 col-sm-10">
-        <div class="icheckbox disabled">
+    <!--   <div class="icheckbox disabled">
           <input type="checkbox" id="flat-checkbox-1">
           <label for="flat-checkbox-1">Remember me</label>
-        </div>
+        </div> -->
       </div>
     </div>
     <div class="form-group">

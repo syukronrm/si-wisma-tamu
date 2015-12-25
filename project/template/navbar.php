@@ -27,6 +27,8 @@
                 <ul class="dropdown-menu">
                   <li><a href="data-wisma.php">Wisma</a></li>
                   <li><a href="data-pengunjung.php">Pengunjung</a></li>
+                  <li><a href="data-petugas.php">Petugas</a></li>
+                  <li><a href="data-tamu.php">Tamu</a></li>
                 </ul>
               </li>
             </ul>

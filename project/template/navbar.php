@@ -14,7 +14,6 @@
           </div>
           <div class="navbar-collapse collapse">
             <ul class="nav navbar-nav">
-              <li><a href="index.php">Home</a></li>
               <li class="dropdown">
                 <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Reservasi<span class="caret"></span></a>
                 <ul class="dropdown-menu">
@@ -28,11 +27,13 @@
                 <ul class="dropdown-menu">
                   <li><a href="data-wisma.php">Wisma</a></li>
                   <li><a href="data-pengunjung.php">Pengunjung</a></li>
+                  <li><a href="data-petugas.php">Petugas</a></li>
+                  <li><a href="data-tamu.php">Tamu</a></li>
                 </ul>
               </li>
             </ul>
             <ul class="nav navbar-nav navbar-right">
-              <li> <a href="admin-login.php"> Login </a> </li>
+              <li> <a href="admin-login.php"> Logout </a> </li>
             </ul>
           </div><!--/.nav-collapse -->
         </div>

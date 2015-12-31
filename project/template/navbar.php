@@ -25,6 +25,7 @@
               <li class="dropdown">
                 <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Data<span class="caret"></span></a>
                 <ul class="dropdown-menu">
+                  <li><a href="data-transaksi.php">Transaksi</a></li>
                   <li><a href="data-wisma.php">Wisma</a></li>
                   <li><a href="data-fasilitas.php">Fasilitas Kamar</a></li>
                    <li><a href="data-jenis-kamar.php">Jenis Kamar</a></li>

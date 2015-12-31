@@ -28,7 +28,7 @@
               values ('TA'||to_char(tamu_seq.nextval,'FM000') ,
               '$no_hp',
               '$nama',
-              '$alamat')";
+              '$alamat','')";
     $query1_parse = oci_parse($conn, $query1);
     oci_execute($query1_parse);
 

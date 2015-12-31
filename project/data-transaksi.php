@@ -9,7 +9,7 @@
   <div class="row" style="padding-top:20px;">
     <div class="panel panel-default" style="background-color:#eee">
       <div class="panel-body">
-        <h3 align="center">DATA WISMA</h3>
+        <h3 align="center">DATA TRANSAKSI</h3>
         <?php
           if(isset($_GET['status']) && $_GET['status']=="sukses")
           {
@@ -25,35 +25,54 @@
             <center><b>Tabel Gagal Diupdate!</b></center>z
             </div>";
           }
+
         ?>
           <table class="table table-hover table-bordered table-striped">
             <thead>
               <tr>
-                <th style="text-align:center;">ID Wisma</th>
-                <th style="text-align:center;">Nama Wisma</th>
-                <th style="text-align:center;">Alamat</th>
+                <th style="text-align:center;">Nama Tamu</th>
+                <th style="text-align:center;">ID Kamar</th>
+                <th style="text-align:center;">Jenis Kamar</th>
+                <th style="text-align:center;">Wisma</th>
+                <th style="text-align:center;">Tanggal Transaksi</th>
+                <th style="text-align:center;">Tanggal Check In</th>
+                <th style="text-align:center;">Tanggal Check Out</th>
+                <th style="text-align:center;">Tanggal Bayar</th>
+                <th style="text-align:center;">Denda</th>
                 <th style="text-align:center;">Edit</th>
                 <th style="text-align:center;">Delete</th>
               </tr>
             </thead>
           <tbody>
            <?php
-              $query = "select * from wisma";
+              $query = "select ts.*, kw.nama_wisma, kw.nama_jenis, m.id_kamar, t.nama_tamu
+                        from transaksi_sewakamar ts, menyewa m, tamu t,(
+                            select w.nama_wisma, k.id_kamar, jk.nama_jenis
+                            from kamar k, wisma w, jenis_kamar jk
+                            where k.id_wisma=w.id_wisma and jk.id_jenis= k.id_jenis) kw
+                        where ts.id_transaksi= m.id_transaksi and m.id_kamar=kw.id_kamar and t.id_tamu= ts.id_tamu";
               $stid = oci_parse($conn, $query);
               oci_execute($stid);
+
               while ($row = oci_fetch_array($stid))
               {?>
                 <tr>
-                <td><?php echo $row['ID_WISMA'];?></td>
+                <td><?php echo $row['NAMA_TAMU'];?></td>
+                <td><?php echo $row['ID_KAMAR'];?></td>
+                <td><?php echo $row['NAMA_JENIS'];?></td>
                 <td><?php echo $row['NAMA_WISMA'];?></td>
-                <td><?php echo $row['ALAMAT_WISMA'];?></td>
-
+                <td><?php echo $row['TGL_TRANSAKSI'];?></td>
+                <td><?php echo $row['TGL_CHECKIN'];?></td>
+                <td><?php echo $row['TGL_CHECKOUT'];?></td>
+                <td><?php echo $row['TGL_BAYAR'];?></td>
+                <td><?php echo $row['DENDA'];?></td>
+                
                 <td>
                   <div>
                     <form method="POST" action="#">
                       <center>
                         <button type="submit" class="btn btn-primary">Edit</button>
-                        <input type="hidden" name="id_wisma" value="<?php echo $row['ID_WISMA'];?>"> </input>
+                        <input type="hidden" name="id_transaksi" value="<?php echo $row['ID_TRANSAKSI'];?>"> </input>
                       </center>
                     </form>
                   </div>
@@ -62,7 +81,7 @@
                   <div>
                     <form method="GET" action="<?php $_PHP_SELF ?>">
                       <center>
-                        <button type='submit' class="btn btn-primary" name='del_wisma' value="<?php echo $row['ID_WISMA'];?>">Delete</button>
+                        <button type='submit' class="btn btn-primary" name='del_transaksi' value="<?php echo $row['ID_TRANSAKSI'];?>">Delete</button>
                       </center>
                     </form>
                   </div>
@@ -73,19 +92,15 @@
               </tbody>
           </table>
 
-          <div class="pull-right">
-            <a href="#">  <button class="btn">TAMBAH BARU</button> </a>
-          </div>
-
           <div>
             <a href="#">  <button class="btn">KEMBALI</button>
           </a> </div>
 
           <div>
            <?php
-              if( isset($_GET['del_wisma']))
+              if( isset($_GET['del_transaksi']))
               {
-                $idkam = $_GET['del_wisma'];
+                $idkam = $_GET['del_transaksi'];
                /* echo '
                    <form method="POST" action="delkamar.php">
                     <div class="controls" style="display:none;">
@@ -102,51 +117,6 @@
               }
            ?>
          </div>
-
-         <h3 align="center">PENDAPATAN WISMA</h3>
-         <table class="table table-hover table-bordered table-striped">
-           <thead>
-             <tr>
-               <th style="text-align:center;">Wisma</th>
-               <th style="text-align:center;">Pendapatan Total</th>
-             </tr>
-           </thead>
-           <tbody>
-             <?php
-             include 'coba.php';
-             $query = "select temp2.nama_wisma, sum(temp2.harga) as pendapatan
-              from transaksi_sewakamar tr,
-              (
-                select m.id_transaksi, temp.nama_wisma, temp.harga
-                from menyewa m,
-                  (
-                  select k.id_kamar, w.nama_wisma, jk.harga
-                  from kamar k, jenis_kamar jk,
-                    (
-                      select nama_wisma, id_wisma
-                      from wisma
-                    ) w
-                  where k.id_wisma=w.id_wisma
-                  and k.id_jenis= jk.id_jenis
-                  ) temp
-                where m.id_kamar in temp.id_kamar
-              ) temp2
-              where temp2.id_transaksi=tr.id_transaksi
-              group by temp2.nama_wisma
-              order by sum(temp2.harga) desc";
-             $stid = oci_parse($conn, $query);
-             oci_execute($stid);
-             while ($row = oci_fetch_array($stid))
-             {?>
-               <tr>
-                 <td><?php echo $row['NAMA_WISMA'];?></td>
-                 <td><?php echo $row['PENDAPATAN'];?></td>
-               </tr>
-             <?php
-             }
-             ?>
-           </tbody>
-         </table>
        </div>
      </div>
    </div>

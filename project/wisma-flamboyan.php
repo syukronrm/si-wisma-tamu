@@ -33,26 +33,26 @@
           function cekStatus($conn, $id_kamar, $tgl_checkin, $tgl_checkout)
           {
             $query_cekStatus = "select count(*) as count
-                                from transaksi_sewakamar tr, 
+                                from transaksi_sewakamar tr,
                                   ( select *
-                                  from menyewa 
+                                  from menyewa
                                   where id_kamar='$id_kamar') m
                                 where m.id_transaksi = tr.id_transaksi
                                 and (
                                   (
-                                    tgl_checkin <= to_date('$tgl_checkin','dd-mm-yyyy') 
-                                    and 
+                                    tgl_checkin <= to_date('$tgl_checkin','dd-mm-yyyy')
+                                    and
                                     tgl_checkout > to_date('$tgl_checkin','dd-mm-yyyy')
                                   )
-                                  or 
+                                  or
                                   (
-                                    tgl_checkin < to_date('$tgl_checkout', 'dd-mm-yyyy') 
-                                    and 
+                                    tgl_checkin < to_date('$tgl_checkout', 'dd-mm-yyyy')
+                                    and
                                     tgl_checkout >= to_date('$tgl_checkout', 'dd-mm-yyyy')
                                   )
                                   or
                                   (
-                                    tgl_checkin >= to_date('$tgl_checkin', 'dd-mm-yyyy') 
+                                    tgl_checkin >= to_date('$tgl_checkin', 'dd-mm-yyyy')
                                     and
                                     tgl_checkout <= to_date('$tgl_checkout', 'dd-mm-yyyy')
                                   )
@@ -77,7 +77,7 @@
           }
         ?>
 
-        <?php 
+        <?php
         if (!isset($_SESSION['flag-pick-date']))
         {?>
 
@@ -86,13 +86,13 @@
           <div class="form-group">
             <label class="control-label col-sm-2" for="date-check-in"> Check in : </label>
             <div class="col-sm-10">
-              <input type="text" class="span2 form-control" value id="date-check-in" name="date-check-in" data-date-format="dd-mm-yyyy">
+              <input type="text" class="span2 form-control" value id="date-check-in" name="date-check-in" data-date-format="dd-mm-yyyy" required>
             </div>
           </div>
           <div class="form-group">
             <label class="control-label col-sm-2" for="date-check-out"> Check out : </label>
             <div class="col-sm-10">
-              <input type="text" class="span2 form-control" value id="date-check-out" name="date-check-out" data-date-format="dd-mm-yyyy">
+              <input type="text" class="span2 form-control" value id="date-check-out" name="date-check-out" data-date-format="dd-mm-yyyy" required>
             </div>
           </div>
           <div class="form-group">
@@ -188,7 +188,7 @@
           unset($_SESSION['flag-pick-date']);
         }
         ?>
-        
+
           <div>
            <?php
               if( isset($_GET['del_kam']))
@@ -220,7 +220,7 @@
 <script type="text/javascript">
 var nowTemp = new Date();
 var now = new Date(nowTemp.getFullYear(), nowTemp.getMonth(), nowTemp.getDate(), 0, 0, 0, 0);
- 
+
 var checkin = $('#date-check-in').datepicker({
   onRender: function(date) {
     return date.valueOf() < now.valueOf() ? 'disabled' : '';

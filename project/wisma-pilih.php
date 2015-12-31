@@ -12,14 +12,17 @@
     $_SESSION['id_kamar'] = $_POST['id_kamar'];
   }
 
-
   if (isset($_POST['nama_tamu'])
       and isset($_POST['no_hp_tamu'])
-      and isset($_POST['alamat_tamu']))
+      and isset($_POST['alamat_tamu'])
+      and isset($_SESSION['date-check-in'])
+      and isset($_SESSION['date-check-out']))
   {
     $nama = $_POST['nama_tamu'];
     $no_hp = $_POST['no_hp_tamu'];
     $alamat = $_POST['alamat_tamu'];
+    $check_in = $_SESSION['date-check-in'];
+    $check_out = $_SESSION['date-check-out'];
 
     $query1 = "insert into tamu
               values ('TA'||to_char(tamu_seq.nextval,'FM000') ,
@@ -42,13 +45,15 @@
               id_tamu,
               id_petugas,
               tgl_transaksi,
-              tgl_checkin)
+              tgl_checkin,
+              tgl_checkout)
               values
               ('TR'||to_char(transaksi_sewakamar_seq.nextval,'FM000'),
               '".$row_query_id_tamu['ID_TAMU'] ."',
               'PE001',
               to_date('".date("d-m-Y")."','dd-mm-yyyy'),
-              to_date('".date("d-m-Y")."','dd-mm-yyyy'))";
+              to_date('$check_in','dd-mm-yyyy'),
+              to_date('$check_out', 'dd-mm-yyyy'))";
     $query2_parse = oci_parse($conn, $query2);
     oci_execute($query2_parse);
 
@@ -57,7 +62,7 @@
     $query_id_transaksi = "select id_transaksi
                       from transaksi_sewakamar
                       where
-                      tgl_checkin=to_date('".date("d-m-Y")."','dd-mm-yyyy')
+                      tgl_checkin=to_date('$check_in','dd-mm-yyyy')
                       and id_tamu='$id_tamu'";
     $query_id_transaksi_parse = oci_parse($conn, $query_id_transaksi);
     oci_execute($query_id_transaksi_parse);
@@ -76,39 +81,45 @@
 ?>
 
 <div class="container">
-  <form class="form-horizontal" role="form" action="<?php $_PHP_SELF ?>" method="POST">
-    <div class="form-group">
-      <label class="control-label col-sm-2" for="nama">Nama :</label>
-      <div class="col-sm-10">
-        <input type="text" class="form-control" name="nama_tamu" placeholder="Masukkan nama">
+  <div class="row" style="padding-top:20px;">
+    <div class="panel panel-default" style="background-color:#eee">
+      <div class="panel-body">
+        <form class="form-horizontal" role="form" action="<?php $_PHP_SELF ?>" method="POST">
+          <div class="form-group">
+            <label class="control-label col-sm-2" for="nama">Nama :</label>
+            <div class="col-sm-10">
+              <input type="text" class="form-control" name="nama_tamu" placeholder="Masukkan nama">
+            </div>
+          </div>
+          <div class="form-group">
+            <label class="control-label col-sm-2" for="pwd">No. HP :</label>
+            <div class="col-sm-10">
+              <input type="text" class="form-control" name="no_hp_tamu" placeholder="Masukkan nomor HP">
+            </div>
+          </div>
+          <div class="form-group">
+            <label class="control-label col-sm-2" for="pwd">Alamat :</label>
+            <div class="col-sm-10">
+              <input type="text" class="form-control" name="alamat_tamu" placeholder="Masukkan alamat">
+            </div>
+          </div>
+          <div class="form-group">
+            <div class="col-sm-offset-2 col-sm-10">
+          <!--   <div class="icheckbox disabled">
+                <input type="checkbox" id="flat-checkbox-1">
+                <label for="flat-checkbox-1">Remember me</label>
+              </div> -->
+            </div>
+          </div>
+          <div class="form-group">
+            <div class="col-sm-offset-2 col-sm-10">
+              <button type="submit" class="btn btn-default">Submit</button>
+            </div>
+          </div>
+        </form>
       </div>
     </div>
-    <div class="form-group">
-      <label class="control-label col-sm-2" for="pwd">No. HP :</label>
-      <div class="col-sm-10">
-        <input type="text" class="form-control" name="no_hp_tamu" placeholder="Masukkan nomor HP">
-      </div>
-    </div>
-    <div class="form-group">
-      <label class="control-label col-sm-2" for="pwd">Alamat :</label>
-      <div class="col-sm-10">
-        <input type="text" class="form-control" name="alamat_tamu" placeholder="Masukkan alamat">
-      </div>
-    </div>
-    <div class="form-group">
-      <div class="col-sm-offset-2 col-sm-10">
-    <!--   <div class="icheckbox disabled">
-          <input type="checkbox" id="flat-checkbox-1">
-          <label for="flat-checkbox-1">Remember me</label>
-        </div> -->
-      </div>
-    </div>
-    <div class="form-group">
-      <div class="col-sm-offset-2 col-sm-10">
-        <button type="submit" class="btn btn-default">Submit</button>
-      </div>
-    </div>
-  </form>
+  </div>
 </div>
 
 <?php include("template/footer.php");?>

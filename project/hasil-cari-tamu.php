@@ -84,12 +84,13 @@
               }
               else if($namatamu == NULL and $tanggalmasuk==NULL and $tahunmasuk==NULL and $tanggallahir==NULL and $tahunlahir==NULL){
                 //hanya bulan lahir dan bulan masuk
-                  $query = "select t.* from tamu t, transaksi_sewakamar ts
+                  $query = "select t.*, ts.id_transaksi from tamu t, transaksi_sewakamar ts
                             where extract(month from t.tgl_lahir) = '$bulanlahir' and extract(month from ts.tgl_checkin) = '$bulanmasuk' and t.id_tamu= ts.id_tamu ";
               }
       
               else {
-                $query="select * from tamu where nama_tamu='$namatamu'";
+                $query="select t.*, ts.id_transaksi from tamu t, transaksi_sewakamar ts 
+                        where t.nama_tamu='$namatamu' and t.id_tamu=ts.id_tamu";
               }
              // $query = "select * from tamu order by ID_TAMU asc";
               $stid = oci_parse($conn, $query);
@@ -126,6 +127,7 @@
                         where e.id_kamar= k.id_kamar and k.id_wisma=w.id_wisma and w.nama_wisma='$nm'
                          order by w.nama_wisma";
            //   echo $query2;
+//echo $query2;
               $stid2 = oci_parse($conn, $query2);
               oci_execute($stid2);
               while ($row = oci_fetch_array($stid2))

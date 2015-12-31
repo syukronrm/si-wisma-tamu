@@ -4,7 +4,7 @@
       <nav class="navbar navbar-default">
         <div class="container">
           <div class="navbar-header">
-            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target=".navbar-collapse">
+            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target=".navbar-collapse" >
               <span class="sr-only">Toggle navigation</span>
               <span class="icon-bar"></span>
               <span class="icon-bar"></span>
@@ -26,7 +26,8 @@
                 <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Data<span class="caret"></span></a>
                 <ul class="dropdown-menu">
                   <li><a href="data-wisma.php">Wisma</a></li>
-                  <li><a href="data-pengunjung.php">Pengunjung</a></li>
+                  <li><a href="data-fasilitas.php">Fasilitas Kamar</a></li>
+                   <li><a href="data-jenis-kamar.php">Jenis Kamar</a></li>
                   <li><a href="data-petugas.php">Petugas</a></li>
                   <li><a href="data-tamu.php">Tamu</a></li>
                 </ul>

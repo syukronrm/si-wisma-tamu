@@ -9,7 +9,7 @@
   <div class="row" style="padding-top:20px;">
     <div class="panel panel-default" style="background-color:#eee">
       <div class="panel-body">
-        <h3 align="center">DATA WISMA</h3>
+        <h3 align="center">DATA FASILITAS KAMAR</h3>
         <?php
           if(isset($_GET['status']) && $_GET['status']=="sukses")
           {
@@ -30,32 +30,35 @@
           <table class="table table-hover table-bordered table-striped">
             <thead>
               <tr>
-                <th style="text-align:center;">ID Wisma</th>
-                <th style="text-align:center;">Nama Wisma</th>
-                <th style="text-align:center;">Alamat</th>
+                <th style="text-align:center;">ID Fasilitas</th>
+                <th style="text-align:center;">Nama Fasilitas</th>
+                <th style="text-align:center;">Jenis Kamar</th>
+                <th style="text-align:center;">Harga</th>
                 <th style="text-align:center;">Edit</th>
                 <th style="text-align:center;">Delete</th>
               </tr>
             </thead>
           <tbody>
            <?php
-              $query = "select * from wisma";
+              $query = "select jk.nama_jenis, f.* from jenis_kamar jk, fasilitas f 
+                        where jk.id_jenis=f.id_jenis";
               $stid = oci_parse($conn, $query);
               oci_execute($stid);
 
               while ($row = oci_fetch_array($stid))
               {?>
                 <tr>
-                <td><?php echo $row['ID_WISMA'];?></td>
-                <td><?php echo $row['NAMA_WISMA'];?></td>
-                <td><?php echo $row['ALAMAT_WISMA'];?></td>
+                <td><?php echo $row['ID_FASILITAS'];?></td>
+                <td><?php echo $row['NAMA_FASILITAS'];?></td>
+                <td><?php echo $row['NAMA_JENIS'];?></td>
+                <td><?php echo $row['HARGA_FASILITAS'];?></td>
                 
                 <td>
                   <div>
                     <form method="POST" action="#">
                       <center>
                         <button type="submit" class="btn btn-primary">Edit</button>
-                        <input type="hidden" name="id_wisma" value="<?php echo $row['ID_WISMA'];?>"> </input>
+                        <input type="hidden" name="id_fasilitas" value="<?php echo $row['ID_FASILITAS'];?>"> </input>
                       </center>
                     </form>
                   </div>
@@ -64,7 +67,7 @@
                   <div>
                     <form method="GET" action="<?php $_PHP_SELF ?>">
                       <center>
-                        <button type='submit' class="btn btn-primary" name='del_wisma' value="<?php echo $row['ID_WISMA'];?>">Delete</button>
+                        <button type='submit' class="btn btn-primary" name='del_fasilitas' value="<?php echo $row['ID_FASILITAS'];?>">Delete</button>
                       </center>
                     </form>
                   </div>
@@ -85,9 +88,9 @@
 
           <div>
            <?php
-              if( isset($_GET['del_wisma']))
+              if( isset($_GET['del_fasilitas']))
               {
-                $idkam = $_GET['del_wisma'];
+                $idkam = $_GET['del_fasilitas'];
                /* echo '
                    <form method="POST" action="delkamar.php">
                     <div class="controls" style="display:none;">

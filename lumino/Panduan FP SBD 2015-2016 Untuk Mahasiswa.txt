@@ -1,0 +1,57 @@
+FINAL PROJECT SISTEM BASIS DATA
+SEMESTER GASAL 2015/2016
+
+Aturan:
+1. Dikerjakan berkelompok, 1 kelompok terdiri dari 2 mahasiswa (beda dengan kelompok sebelumnya, namun memiliki topik sama, maksudnya jika sebelumnya mengerjakan Fasor, untuk FP tetap mengerjakan Fasor).
+2. Untuk UI, buatlah halaman kelola data yang memiliki kemampuan untuk insert, update dan delete data (utamakan untuk tabel transaksional).
+3. Ada tugas individu (per mahasiswa) untuk membuat query dan laporan/report (dijelaskan pada aturan no.6).
+4. Laporan mengikuti template FP yang diberikan.
+5. Setiap tabel pada database HARUS memiliki data yang valid dan cukup, agar bisa ditampilkan pada query dan report (tidak boleh ada alasan hasil query tidak sesuai/tidak tampil karena data kurang)
+5. Melanjutkan studi kasus: Fasilitas Olahraga (Fasor) dan Wisma Tamu dengan ketentuan sbb:
+
+-----------------------------------------------------------------------------------------
+WISMA TAMU:::
+
+Soal Tambahan:
+
+Sistem dapat menangani transaksi di lebih dari 3 wisma yang ada yaitu:
+- Flamboyan dengan tipe kamar standar, eksekutif dan VIP
+- Bougenville dengan tipe kamar standar dan eksekutif
+- Jasmine dengan model sewa rumah
+
+
+Query dan Report/Laporan:
+1. Petugas dapat melakukan pencarian kamar kosong
+2. Pengelola membutuhkan data pemasukan seluruh wisma tamu dan wisma tamu mana saja yang pemasukannya paling besar
+3. Petugas dapat menampilkan jumlah penyewaan di wisma yang disewa pada bulan tertentu melebihi 5x transaksi penyewaan. 
+4. Menampilkan tamu yang menyewa kamar di bulan november dan lahir pada bulan november.
+
+
+Per mahasiswa menambahkan berikut, di luar soal yang sudah diberikan:
+1. Laporan harus mengandung nested query dan group by berdasarkan kriteria tertentu
+2. Pencarian harus mengandung group by berdasarkan kriteria tertentu
+
+
+
+
+FASOR:::
+
+Soal Tambahan:
+
+Fasor menyediakan paket penyewaan lapangan dengan harga yang lebih murah dibandingkan dengan yang reguler.
+   Paket penyewaan terbagi menjadi: - Bulanan (maks pemakaian 4 x) dan Tahunan (maks pemakaian 20 x)
+
+
+Query dan Report/Laporan:
+Kepala Fasor menginginkan bisa melihat Informasi:
+1. Tampilkan daftar properti yang dimiliki di setiap lapangan
+2. Rata-rata pemakaian paket penyewaan bulanan dan tahunan
+3. Menampilkan nama penyewa yang menggunakan paket dan jumlah penyewaannya melebihi paket yang dipilih.
+4. Menampilkan nama-nama penyewa yang belum menggunakan paketnya tapi sudah mendaftar paket sampai tanggal query
+
+
+Per mahasiswa menambahkan berikut, di luar soal yang sudah diberikan:
+1. Laporan harus mengandung nested query dan group by berdasarkan kriteria tertentu
+2. Pencarian harus mengandung group by berdasarkan kriteria tertentu
+
+-----------------------------------------------------------------------------------------

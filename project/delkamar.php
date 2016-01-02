@@ -1,7 +1,7 @@
 <?php
 	include ('coba.php');
 	$idkam = $_POST['id_kam'];
-	console.log($idkam);
+
 	$query = "delete from kamar where id_kamar='$idkam'";
 	$stid = oci_parse($conn, $query);
 	oci_execute($stid);	

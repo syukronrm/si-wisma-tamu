@@ -89,6 +89,7 @@
            <?php
               if( isset($_GET['del_petugas']))
               {
+                echo 'ddddddddddddd';
                 $idkam = $_GET['del_petugas'];
                /* echo '
                    <form method="POST" action="delkamar.php">

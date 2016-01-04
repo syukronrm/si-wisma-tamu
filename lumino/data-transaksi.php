@@ -78,10 +78,10 @@
                 
                 <td>
                   <div>
-                    <form method="POST" action="#">
+                    <form method="POST" action="update-transaksi.php">
                       <center>
                         <button type="submit" class="btn btn-primary">Edit</button>
-                        <input type="hidden" name="id_transaksi" value="<?php echo $row['ID_TRANSAKSI'];?>"> </input>
+                        <input type="hidden" name="update_transaksi" value="<?php echo $row['ID_TRANSAKSI'];?>"> </input>
                       </center>
                     </form>
                   </div>
@@ -106,11 +106,11 @@
            <?php
               if( isset($_GET['del_transaksi']))
               {
-                $idkam = $_GET['del_transaksi'];
-               /* echo '
-                   <form method="POST" action="delkamar.php">
+                $idtransaksi = $_GET['del_transaksi'];
+                echo '
+                   <form method="POST" action="delete-transaksi.php">
                     <div class="controls" style="display:none;">
-                      <input class="form-control" type="text" name="id_kam" value="'.$idkam.'">
+                      <input class="form-control" type="text" name="id_transaksi" value="'.$idtransaksi.'">
                     </div>
                     <div class="alert alert-dismissable">
                       <center><b> Melanjutkan Penghapusan ? </b> <br><br>
@@ -119,7 +119,7 @@
                       </center>
                     </div>
                   </form>
-                ';*/
+                ';
               }
            ?>
          </div>

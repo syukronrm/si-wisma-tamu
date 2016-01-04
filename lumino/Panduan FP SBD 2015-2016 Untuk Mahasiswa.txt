@@ -1,7 +1,7 @@
 FINAL PROJECT SISTEM BASIS DATA
 SEMESTER GASAL 2015/2016
 
-Aturan:
+Aturan:s
 1. Dikerjakan berkelompok, 1 kelompok terdiri dari 2 mahasiswa (beda dengan kelompok sebelumnya, namun memiliki topik sama, maksudnya jika sebelumnya mengerjakan Fasor, untuk FP tetap mengerjakan Fasor).
 2. Untuk UI, buatlah halaman kelola data yang memiliki kemampuan untuk insert, update dan delete data (utamakan untuk tabel transaksional).
 3. Ada tugas individu (per mahasiswa) untuk membuat query dan laporan/report (dijelaskan pada aturan no.6).

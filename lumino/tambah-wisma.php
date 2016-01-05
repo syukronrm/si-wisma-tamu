@@ -64,7 +64,7 @@
                 <table style="width:15%">
                   <tr>
                     <td> <button name="simpan"  value="simpan" class="btn btn-success" >Simpan</button> </td>
-                    <td><a href="data-tamu.php"><button name="batal"  value="batal" class="btn btn-success" >Batal</button> </a>
+                    <td><button name="batal"  value="batal" class="btn btn-success" >Batal</button> </a></td>
                     </tr>
 
                   </table>

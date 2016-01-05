@@ -5,7 +5,7 @@ $batal = $_POST['batal'];
 $batal1 ="batal";
 if($batal == $batal1){
 
-  header("Location: data-tamu.php?batal");
+  header("Location: data-wisma.php?batal");
 }
 else {
   $id_wisma = $_POST['id_wisma'];

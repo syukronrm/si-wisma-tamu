@@ -72,6 +72,7 @@
           <div class="pull-right">
               <button type="submit" class="btn" name='pendapatan'>Pendapatan</button>
           </div>
+        </form>
           <br>
         
         <h3 align="center">DATA WISMA</h3>
@@ -142,7 +143,27 @@
             <br>
             <a href="tambah-wisma.php">  <button class="btn">TAMBAH BARU</button> </a>
           </div>
-
+       <div>
+           <?php
+              if( isset($_GET['del_wisma']))
+              {
+                $idwisma = $_GET['del_wisma'];
+                echo '
+                   <form method="POST" action="delete-wisma.php">
+                    <div class="controls" style="display:none;">
+                      <input class="form-control" type="text" name="id_wisma" value="'.$idwisma.'">
+                    </div>
+                    <div class="alert alert-dismissable">
+                      <center><b> Melanjutkan Penghapusan ? </b> <br><br>
+                      <button type="submit" style="width:70px"> Ya </button> &nbsp &nbsp &nbsp
+                      <button type="button" data-dismiss="alert" submit style="width:70px"> Tidak </button>
+                      </center>
+                    </div>
+                  </form>
+                ';
+              }
+           ?>
+         </div>
 
           
        </div>

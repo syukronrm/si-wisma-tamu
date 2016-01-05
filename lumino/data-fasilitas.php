@@ -64,7 +64,7 @@
                 
                 <td>
                   <div>
-                    <form method="POST" action="update-transaksi.php">
+                    <form method="POST" action="update-fasilitas.php">
                       <center>
                         <button type="submit" class="btn btn-primary">Edit</button>
                         <input type="hidden" name="update_fasilitas" value="<?php echo $row['ID_FASILITAS'];?>"> </input>

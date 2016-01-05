@@ -6,7 +6,8 @@
   include 'connect.php';
   if (isset($_POST['nama_petugas'])
       and isset($_POST['no_hp_petugas'])
-      and isset($_POST['alamat_petugas']))
+      and isset($_POST['alamat_petugas']) 
+       and strcmp($_POST['nama_petugas'], "")!=0)
   {
     $nama = $_POST['nama_petugas'];
     $no_hp = $_POST['no_hp_petugas'];

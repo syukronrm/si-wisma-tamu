@@ -7,7 +7,8 @@
 
   if (isset($_POST['nama_fasilitas'])
       and isset($_POST['harga'])
-      and isset($_POST['jenis']))
+      and isset($_POST['jenis'])
+       and strcmp($_POST['nama_fasilitas'], "")!=0)
   {
     $nama = $_POST['nama_fasilitas'];
     $harga = $_POST['harga'];

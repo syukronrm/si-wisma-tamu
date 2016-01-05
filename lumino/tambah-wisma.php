@@ -5,7 +5,7 @@
 <?php
   include 'connect.php';
   if (isset($_POST['nama_wisma'])
-      and isset($_POST['alamat_wisma']))
+      and isset($_POST['alamat_wisma']) and strcmp($_POST['nama_wisma'], "")!=0)
   {
     $nama = $_POST['nama_wisma'];
     $alamat = $_POST['alamat_wisma'];

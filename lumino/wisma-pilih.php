@@ -83,6 +83,10 @@
                       '$id_kamar')";
     $query_menyewa_parse = oci_parse($conn, $query_menyewa);
     oci_execute($query_menyewa_parse);
+
+    $query_update = "update transaksi_sewakamar set lama=(tgl_checkout- tgl_checkin) where id_transaksi='$id_transaksi'";
+    $query_update_parse = oci_parse($conn, $query_update);
+    oci_execute($query_update_parse);
   }
 ?>
 <div class="col-sm-9 col-sm-offset-3 col-lg-10 col-lg-offset-2 main">     

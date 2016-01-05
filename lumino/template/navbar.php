@@ -23,7 +23,7 @@
     </div><!-- /.container-fluid -->
   </nav>
     
-  <div id="sidebar-collapse" class="col-sm-2 col-lg-2 sidebar">
+  <div id="sidebar-collapse" class="col-sm-1 col-lg-2 sidebar">
     <form role="search">
       <div class="form-group">
         <input type="text" class="form-control" placeholder="Search">
@@ -65,6 +65,10 @@
               <svg class="glyph stroked chevron-right"><use xlink:href="#stroked-chevron-right"></use></svg> Data Wisma</a>
           </li>
           <li>
+            <a class="" href="data-kamar.php">
+              <svg class="glyph stroked chevron-right"><use xlink:href="#stroked-chevron-right"></use></svg> Data Kamar</a>
+          </li>
+          <li>
             <a class="" href="data-jenis-kamar.php">
               <svg class="glyph stroked chevron-right"><use xlink:href="#stroked-chevron-right"></use></svg> Data Jenis Kamar</a>
           </li>
@@ -82,8 +86,10 @@
           </li>
         </ul>
       </li>
+
       <li role="presentation" class="divider"></li>
-      
+      <li><a href="ag1.php"><svg class="glyph stroked dashboard-dial"><use xlink:href="#stroked-dashboard-dial"></use></svg> ag 1</a></li>
+      <li><a href="ag.php"><svg class="glyph stroked dashboard-dial"><use xlink:href="#stroked-dashboard-dial"></use></svg> ag 2</a></li>
     </ul>
 
   </div><!--/.sidebar-->

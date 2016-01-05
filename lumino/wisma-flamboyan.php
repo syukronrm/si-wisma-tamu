@@ -128,7 +128,7 @@
               </thead>
             <tbody>
              <?php
-                $query = "select kamar.id_kamar, jenis_kamar.nama_jenis, kamar.status_kamar, jenis_kamar.id_jenis, jenis_kamar.harga
+                $query = "select kamar.id_kamar, jenis_kamar.nama_jenis, jenis_kamar.id_jenis, jenis_kamar.harga
                           from kamar , wisma, jenis_kamar
                           where kamar.id_wisma=wisma.id_wisma
                           and kamar.id_jenis= jenis_kamar.id_jenis

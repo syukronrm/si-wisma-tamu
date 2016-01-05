@@ -2,36 +2,6 @@
 <?php include("template/header.php");?>
 <?php include("template/navbar.php");?>
 
-<?php
-  include 'connect.php';        
-
-  if (isset($_POST['nama_jenis'])
-      and isset($_POST['harga'])
-       and strcmp($_POST['nama_jenis'], "")!=0)
-  {
-    $nama = $_POST['nama_jenis'];
-    $harga = $_POST['harga'];
-
-     $query = "insert into JENIS_KAMAR
-              values ('JK'||to_char(fasilitas_seq.nextval,'FM000') ,
-              '$nama',
-              '$harga')";
-    $query_parse = oci_parse($conn, $query);
-    oci_execute($query_parse);
-    ?>
-      <script type="text/javascript">
-      window.location = "data-jenis-kamar.php";
-      </script> 
-    <?php
-  }
-  if(isset($_POST['batal'])){
-      ?>
-      <script type="text/javascript">
-      window.location = "data-jenis-kamar.php";
-      </script> 
-      <?php
-  }
-?>
 <div class="col-sm-9 col-sm-offset-3 col-lg-10 col-lg-offset-2 main">     
     <div class="row">
       <ol class="breadcrumb">
@@ -46,37 +16,67 @@
       <div class="panel panel-default" >
 
         <div class="panel-body">
+             <?php
 
-          <div class="panel panel-default">
-            <div class="panel-body">
-              <form method="POST" action="<?php $_PHP_SELF ?>">
-                <div class="form-group">
-                  <label class="control-label">NAMA JENIS</label>
-                  <div class="controls">
-                    <input class="form-control" type="text" name="nama_jenis" >
-                  </div>
-                </div>
-                <div class="form-group">
-                  <label class="control-label">HARGA </label>
-                  <div class="controls">
-                    <input class="form-control" type="text" name="harga">
-                  </div>
-                </div>
-                
-                <table style="width:15%">
-                  <tr>
-                    <td> <button name="simpan"  value="simpan" class="btn btn-success" >Simpan</button> </td>
-                    <td><button name="batal"  value="batal" class="btn btn-success" >Batal</button> </td>
-                    </tr>
+      //      include "coba.php"
+        //    $idkamar = $_POST['edit_kam'];
+            /*            $query1 = "select k.id_kamar, jk.nama_jenis, w.nama_wisma 
+                    from kamar k, jenis_kamar jk, wisma w 
+                    where k.id_wisma=nama_w.wisma and k.id_jenis=jk.id_jenis and k.id_kamar='$id_kam'";
+                        $stid1 = oci_parse($conn, $query1);
+                        oci_execute($stid1);
+                        $row = oci_fetch_array($stid1);
+                        $nama_tamu = $row['NAMA_JENIS'];
+                        $telepon_tamu = $row['TELEPON_TAMU'];
+                        $alamat_tamu = $row['ALAMAT_TAMU'];
+                        $tanggal_lahir = $row['TGL_LAHIR'];*/
+                    include 'connect.php';
+                  $query="select id_jenis, nama_jenis from jenis_kamar";
+                  $stid = oci_parse($conn, $query);
+                  oci_execute($stid);
 
-                  </table>
-
-                </div>
-              </form>
-            </div>
-          </div>';
-
+                  $query2="select id_wisma, nama_wisma from wisma";
+                  $stid2 = oci_parse($conn, $query2);
+                  oci_execute($stid2);
+                        echo '
+                        <div class="panel panel-default">
+                          <div class="panel-body">
+                            <form method="POST" action="kamar-tambah.php">
+                              
+                              <div class="form-group">
+                               <select name="wisma" style="btn-info;height:30px" placeholder="WISMA">';
+                                 while ($row2 = oci_fetch_array($stid2))
+                                 {?>
+                                    <option value="<?php echo $row2['ID_WISMA'];?>"> <?php echo $row2['NAMA_WISMA'];?> </option>
+                                <?php  } 
+                                  echo'
+                              </select> 
+                              </div>
+                              <div class="form-group">
+                               <select name="jenis_kamar" style="btn-info;height:30px" placeholder="JENIS KAMAR">';
+                                 while ($row = oci_fetch_array($stid))
+                                 {?>
+                                    <option value="<?php echo $row['ID_JENIS'];?>"> <?php echo $row['NAMA_JENIS']; ?> </option>
+                                <?php  } 
+                                  echo'
+                              </select> 
+                              </div>
+                                <table style="width:15%">
+                                  
+                                    <tr>
+                                      <td> <input class="btn btn-success" value="simpan" type="submit"> </td>
+                                      <td><a href="data-tamu.php"><button name="batal"  value="batal" class="btn btn-success" >Batal</button> </a>
+                                    </tr>
+                                  
+                                </table>
+                               
+                              </div>
+                            </form>
+                          </div>
+                        </div>';
+                      
           
+            ?>
 
           </div>
         </div>

@@ -119,16 +119,15 @@
             <thead>
               <tr>
                 <th style="text-align:center;">ID Kamar</th>
-                <th style="text-align:center;">Jenis Kamar</th>
-                <th style="text-align:center;">Status Kamar</th>
-                <th style="text-align:center;">Pilih</th>
-                <th style="text-align:center;">Edit</th>
-                <th style="text-align:center;">Delete</th>
+                  <th style="text-align:center;">Jenis Kamar</th>
+                  <th style="text-align:center;">HARGA  PERHARI</th>
+                  <th style="text-align:center;">FASILITAS</th>
+                  <th style="text-align:center;"> </th>
               </tr>
             </thead>
           <tbody>
            <?php
-              $query = "select kamar.id_kamar, jenis_kamar.nama_jenis, kamar.status_kamar
+              $query = "select kamar.id_kamar, jenis_kamar.nama_jenis, jenis_kamar.harga
                         from kamar , wisma, jenis_kamar
                         where kamar.id_wisma=wisma.id_wisma
                         and kamar.id_jenis= jenis_kamar.id_jenis
@@ -141,8 +140,29 @@
               {?>
                 <tr>
                 <td><?php echo $row['ID_KAMAR'];?></td>
-                <td><?php echo $row['NAMA_JENIS'];?></td>
-                <td><?php echo $row['STATUS_KAMAR'];?></td>
+                  <td><?php echo $row['NAMA_JENIS'];?></td>
+                  <td><?php echo $row['HARGA'];?></td>
+                <td>
+                    <table style="border-bottom-style: none;">
+                      <tr>
+
+                        <?php 
+                        $id= $row['ID_KAMAR'];
+                         $query1 = "select * from 
+                        (select nama_jenis, harga, id_jenis 
+                        from jenis_kamar where id_jenis=(
+                            select id_jenis from kamar where id_kamar='$id')) jk, fasilitas f
+                        where jk.id_jenis=f.id_jenis";
+                        $stid1 = oci_parse($conn, $query1);
+                        oci_execute($stid1);
+                        while ($row1 = oci_fetch_array($stid1)){
+                        ?><tr>
+                          <td  style="white-space:nowrap"><?php echo $row1['NAMA_FASILITAS'];?></td></tr>
+                          <?php } 
+                          ?>
+                        </tr>
+                    </table>
+                  </td>
                 <td>
                   <div>
                     <form method="POST" action="wisma-pilih.php">
@@ -160,64 +180,17 @@
                     </form>
                   </div>
                 </td>
-                <td>
-                  <div>
-                    <form method="POST" action="wisma-update.php">
-                      <center>
-                        <button type="submit" class="btn btn-primary">Edit</button>
-                        <input type="hidden" name="id_kam" value="<?php echo $row['ID_KAMAR'];?>"> </input>
-                      </center>
-                    </form>
-                  </div>
-                </td>
-                <td>
-                  <div>
-                    <form method="GET" action="<?php $_PHP_SELF ?>">
-                      <center>
-                        <button type='submit' class="btn btn-primary" name='del_kam' value="<?php echo $row['ID_KAMAR'];?>">Delete</button>
-                      </center>
-                    </form>
-                  </div>
-                </td>
+               
                 <?php
                 }
                 ?>
               </tbody>
           </table>
-
-          <div class="pull-right">
-            <a href="#">  <button class="btn">TAMBAH BARU</button> </a>
-          </div>
-
-          <div>
-            <a href="#">  <button class="btn">KEMBALI</button>
-          </a> </div>
-
         <?php
           unset($_SESSION['flag-pick-date']);
         }
         ?>
-          <div>
-           <?php      
-              if( isset($_GET['del_kam']))
-              {
-                $idkam = $_GET['del_kam'];
-                echo '
-                   <form method="POST" action="delkamar.php">
-                    <div class="controls" style="display:none;">
-                      <input class="form-control" type="text" name="id_kam" value="'.$idkam.'">
-                    </div>
-                    <div class="alert alert-dismissable">
-                      <center><b> Melanjutkan Penghapusan ? </b> <br><br>
-                      <button type="submit" style="width:70px"> Ya </button> &nbsp &nbsp &nbsp
-                      <button type="button" data-dismiss="alert" submit style="width:70px"> Tidak </button>
-                      </center>
-                    </div>
-                  </form>
-                ';
-              }
-           ?>
-         </div>
+          
        </div>
      </div>
    </div>

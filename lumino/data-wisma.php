@@ -141,8 +141,17 @@
 
           <div class="pull-right">
             <br>
-            <a href="tambah-wisma.php">  <button class="btn">TAMBAH BARU</button> </a>
+            <a href="tambah-wisma.php">  <button class="btn">Tambah Baru</button> </a>
           </div>
+          <br>
+          <br>
+          <br>
+           <form method="GET" action="<?php $_PHP_SELF ?>">
+          <div class="pull-right">
+              <button type="submit" class="btn" name='5x'>Transaksi Wisma</button>
+          </div>
+        </form>
+
        <div>
            <?php
               if( isset($_GET['del_wisma']))
@@ -166,8 +175,37 @@
          </div>
 
           
+       <br><br><br><br>
+       <div class="pull-right">
+        <?php 
+          if( isset($_GET['5x'])){
+            echo '<div> 
+            <form method="POST" action="transaksi-wisma5x.php">
+                <b>Pilih Bulan : </b>
+            
+            <select name="bulan" style="btn-info;height:30px" placeholder="bulan">
+              <option value="0"> Bulan </option>
+              <option value="1"> Januari </option>
+              <option value="2"> Februari </option>
+              <option value="3"> Maret </option>
+              <option value="4"> April </option>
+              <option value="5"> Mei </option>
+              <option value="6"> Juni </option>
+              <option value="7"> Juli </option>
+              <option value="8"> Agustus </option>
+              <option value="9"> September </option>
+              <option value="10"> Oktober </option>
+              <option value="11"> Nopember </option>
+              <option value="12"> Desember </option>
+            </select> 
+                  <button type="submit" class="btn" name="cari">Cari</button>
+            </form>
+                  </div>';
+          }
+
+        ?>
+        </div>
        </div>
-       
      </div>
    </div>
 </div>

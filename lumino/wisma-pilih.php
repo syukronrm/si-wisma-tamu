@@ -1,6 +1,5 @@
 <?php
   include 'connect.php';
-  session_start();
 ?>
 
 <?php include("template/header.php");?>
@@ -10,6 +9,7 @@
 <script type="text/javascript" src="js/bootstrap-datepicker1.js"></script>
 
 <?php
+  echo $_SESSION['test'];
   if (isset($_POST['id_kamar']))
   {
     $_SESSION['id_kamar'] = $_POST['id_kamar'];
@@ -18,14 +18,12 @@
   if (isset($_POST['nama_tamu'])
       and isset($_POST['no_hp_tamu'])
       and isset($_POST['alamat_tamu'])
-      and isset($_POST['tanggal-lahir'])
       and isset($_SESSION['date-check-in'])
       and isset($_SESSION['date-check-out']))
   {
     $nama = $_POST['nama_tamu'];
     $no_hp = $_POST['no_hp_tamu'];
     $alamat = $_POST['alamat_tamu'];
-    $tanggal_lahir = $_POST['tanggal-lahir'];
     $check_in = $_SESSION['date-check-in'];
     $check_out = $_SESSION['date-check-out'];
 
@@ -33,8 +31,7 @@
               values ('TA'||to_char(tamu_seq.nextval,'FM000') ,
               '$no_hp',
               '$nama',
-              '$alamat',
-              to_date('$tanggal_lahir','dd-mm-yyyy'))";
+              '$alamat')";
     $query1_parse = oci_parse($conn, $query1);
     oci_execute($query1_parse);
 
@@ -84,9 +81,26 @@
     $query_menyewa_parse = oci_parse($conn, $query_menyewa);
     oci_execute($query_menyewa_parse);
 
-    $query_update = "update transaksi_sewakamar set lama=(tgl_checkout- tgl_checkin) where id_transaksi='$id_transaksi'";
+    $query_update = "update transaksi_sewakamar set lama=extract(day from (tgl_checkout-tgl_checkin)) where id_transaksi='$id_transaksi'";
     $query_update_parse = oci_parse($conn, $query_update);
     oci_execute($query_update_parse);
+
+    $query = "DECLARE
+                ID_TR VARCHAR2(200);
+                v_Return NUMBER;
+              BEGIN
+                ID_TR := NULL;
+
+                v_Return := SETHARGA(
+                  ID_TR => '$id_transaksi'
+                );
+                
+                UPDATE transaksi_sewakamar
+                SET harga=v_return
+                where id_transaksi='$id_transaksi';
+              END;";
+    $query_function_parse = oci_parse($conn, $query);
+    oci_execute($query_function_parse);
   }
 ?>
 <div class="col-sm-9 col-sm-offset-3 col-lg-10 col-lg-offset-2 main">     
@@ -129,12 +143,12 @@
               </div> -->
             </div>
           </div>
-          <div class="form-group">
+          <!-- <div class="form-group">
             <label class="control-label col-sm-2" for="tanggal-lahir">Tanggal Lahir: </label>
             <div class="col-sm-10">
               <input type="text" class="span2 form-control" value id="tanggal-lahir" name="tanggal-lahir" data-date-format="dd-mm-yyyy" required>
             </div>
-          </div>
+          </div> -->
           <div class="form-group">
             <div class="col-sm-offset-2 col-sm-10">
               <button type="submit" class="btn btn-default">Submit</button>

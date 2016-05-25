@@ -1,6 +1,7 @@
+<?php include("template/header.php");?>
+<?php include("template/navbar.php");?>
 
 <?php
-  session_start();
   include 'connect.php';
   if (isset($_POST['bulan']))
   {
@@ -9,10 +10,6 @@
   $bulan = $_SESSION['bulan'];
 
 ?>
-
-
-<?php include("template/header.php");?>
-<?php include("template/navbar.php");?>
 
 <?php
   include 'connect.php';

@@ -1,5 +1,6 @@
 <?php
 	include ('connect.php');
+	session_start();
 
 	$idwisma = $_POST['id_wisma'];
      $query = "delete from wisma where id_wisma='$idwisma'";

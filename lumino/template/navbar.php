@@ -9,13 +9,33 @@
           <span class="icon-bar"></span>
           <span class="icon-bar"></span>
         </button>
-        <a class="navbar-brand" href="#"><span>Wisma</span>Tamu</a>
+        <a class="navbar-brand" href="index.php"><span>Wisma</span>Tamu</a>
         <ul class="user-menu">
           <li class="dropdown pull-right">
-            <a href="#" class="dropdown-toggle" data-toggle="dropdown"><svg class="glyph stroked male-user"><use xlink:href="#stroked-male-user"></use></svg> User <span class="caret"></span></a>
+            <a href="#" class="dropdown-toggle" data-toggle="dropdown"><svg class="glyph stroked male-user"><use xlink:href="#stroked-male-user"></use></svg>
+            <?php 
+              if (isset($_SESSION['admin-login']))
+              {
+                echo $_SESSION['admin-login'];
+            ?>
+              <span class="caret"></span></a>
+                <ul class="dropdown-menu" role="menu">
+                  <li><a href="admin-logout.php"><svg class="glyph stroked cancel"><use xlink:href="#stroked-cancel"></use></svg> Logout</a></li>
+                </ul>
+            <?php
+              }
+              else
+              {
+                echo "Sign in first";
+            ?>
+            <span class="caret"></span></a>
             <ul class="dropdown-menu" role="menu">
-              <li><a href="login.php"><svg class="glyph stroked cancel"><use xlink:href="#stroked-cancel"></use></svg> Logout</a></li>
+              <li><a href="admin-login.php"><svg class="glyph stroked cancel"><use xlink:href="#stroked-cancel"></use></svg> Sign in</a></li>
             </ul>
+            <?php
+            }
+            ?>
+            
           </li>
         </ul>
       </div>
@@ -84,12 +104,15 @@
             <a class="" href="data-petugas.php">
               <svg class="glyph stroked chevron-right"><use xlink:href="#stroked-chevron-right"></use></svg> Data Petugas</a>
           </li>
+          <li>
+            <a class="" href="data-log-transaksi.php">
+              <svg class="glyph stroked chevron-right"><use xlink:href="#stroked-chevron-right"></use></svg> Data Log</a>
+          </li>
         </ul>
       </li>
 
       <li role="presentation" class="divider"></li>
-      <li><a href="ag1.php"><svg class="glyph stroked dashboard-dial"><use xlink:href="#stroked-dashboard-dial"></use></svg> ag 1</a></li>
-      <li><a href="ag.php"><svg class="glyph stroked dashboard-dial"><use xlink:href="#stroked-dashboard-dial"></use></svg> ag 2</a></li>
+      <li><a href="diskon.php"><svg class="glyph stroked dashboard-dial"><use xlink:href="#stroked-dashboard-dial"></use></svg> Diskon </a></li>
+      <li><a href="cari-jumlah.php"><svg class="glyph stroked dashboard-dial"><use xlink:href="#stroked-dashboard-dial"></use></svg> Cari Jumlah </a></li>
     </ul>
-
   </div><!--/.sidebar-->

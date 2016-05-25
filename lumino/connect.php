@@ -2,7 +2,7 @@
 // Create connection to Oracle
 
 
-$conn = oci_connect("FPFP", "FPFP", "//localhost/XE");
+$conn = oci_connect("syukronrm", "sandi", "//localhost/XE");
 
 //$conn = oci_connect("fp", "fp", "//localhost/XE");
 

@@ -49,7 +49,6 @@
       <div class="panel panel-default" >
 
         <div class="panel-body">
-
           <div class="panel panel-default">
             <div class="panel-body">
               <form method="POST" action="<?php $_PHP_SELF ?>">
@@ -76,18 +75,12 @@
                     <td> <button name="simpan"  value="simpan" class="btn btn-success" >Simpan</button> </td>
                     <td><a href="data-tamu.php"><button name="batal"  value="batal" class="btn btn-success" >Batal</button> </a>
                     </tr>
-
-                  </table>
-
-                </div>
+                </table>
               </form>
             </div>
-          </div>';
-
-          
-
           </div>
         </div>
       </div>
+    </div>
       <!-- Site footer -->
 <?php include("template/footer.php");?>

@@ -1,5 +1,6 @@
 <?php
 	include ('connect.php');
+	session_start();
 
 	$idfasilitas = $_POST['id_fasilitas'];
      $query = "delete from fasilitas where id_fasilitas='$idfasilitas'";

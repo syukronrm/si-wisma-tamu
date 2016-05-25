@@ -1,6 +1,4 @@
 <?php include("template/header.php");?>
-<?php //include("template/navbar.php");?>
-
 
 <div class="container">
   <div class="row">
@@ -71,7 +69,13 @@
    else if(isset($_GET['status']) && $_GET['status']=="user_not_found"){
     echo "<div class='alert alert-dismissable alert-danger'>
     <button type='button' class='close' data-dismiss='alert'>&times;</button>
-    <center><b>ID TIDAK TERDAFTAR!</b></center>
+    <center><b>ID tidak terdaftar!</b></center>
+    </div>";
+   }
+   else if(isset($_GET['status']) && $_GET['status']=="login_first"){
+    echo "<div class='alert alert-dismissable alert-danger'>
+    <button type='button' class='close' data-dismiss='alert'>&times;</button>
+    <center><b>Login dahulu!</b></center>
     </div>";
    }
 ?>

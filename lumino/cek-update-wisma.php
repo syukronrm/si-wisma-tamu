@@ -1,6 +1,7 @@
 
 <?php
 include 'connect.php';
+  session_start();
 $batal = $_POST['batal'];
 $batal1 ="batal";
 if($batal == $batal1){

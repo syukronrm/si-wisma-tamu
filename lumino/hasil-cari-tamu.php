@@ -1,6 +1,8 @@
 
+<?php include("template/header.php");?>
+<?php include("template/navbar.php");?>
+
 <?php
-  session_start();
   include 'connect.php';
   if (isset($_POST['namatamu']))
   {
@@ -38,9 +40,6 @@
   $bulanlahir=$_SESSION['bulanlahir'];
   $tahunlahir=$_SESSION['tahunlahir'];
 ?>
-
-<?php include("template/header.php");?>
-<?php include("template/navbar.php");?>
 
 <div class="col-sm-9 col-sm-offset-3 col-lg-10 col-lg-offset-2 main">     
     <div class="row">

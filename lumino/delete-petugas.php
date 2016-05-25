@@ -1,4 +1,5 @@
 <?php
+	session_start();
 	include ('connect.php');
 
 	$idpetugas = $_POST['id_petugas'];

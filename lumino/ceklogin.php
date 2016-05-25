@@ -1,6 +1,7 @@
 <?php
 	include "connect.php";
-    $query="select petugas.id_petugas
+	session_start();
+    $query="select id_petugas, nama_petugas
             from petugas
             where petugas.id_petugas='$_POST[ID]'";
 
@@ -10,13 +11,14 @@
     $row=oci_fetch_array($stid);
 
 	$pas=$_POST['pass'];
-	//$ID=$_POST['ID'];
+
 	if($row != NULL){
-		if ($pas=="FPBASDAT"){
+		if ($pas=="fpmbd"){
 		  header("Location: index.php");
+		  $_SESSION['admin-login'] = $row['NAMA_PETUGAS'];
 		}
 		else {
-		  header("Location: admin-login.php?status=gagal");
+		  	header("Location: admin-login.php?status=gagal");
 		}
 	}
 	else {

@@ -1,5 +1,8 @@
+
+<?php include("template/header.php");?>
+<?php include("template/navbar.php");?>
+
 <?php
-session_start();
   if (isset($_POST['update_transaksi']))
   {
     $_SESSION['id_transaksi'] = $_POST['update_transaksi'];
@@ -10,9 +13,6 @@ session_start();
 //      $id_kamar = $_SESSION['id_kamar'];
 
 ?>
-
-<?php include("template/header.php");?>
-<?php include("template/navbar.php");?>
 
 <div class="col-sm-9 col-sm-offset-3 col-lg-10 col-lg-offset-2 main">     
     <div class="row">

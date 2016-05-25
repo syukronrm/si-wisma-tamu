@@ -1,5 +1,7 @@
+<?php include("template/header.php");?>
+<?php include("template/navbar.php");?>
+
 <?php
-session_start();
   if (isset($_POST['update_tamu']))
   {
     $_SESSION['id_tamu'] = $_POST['update_tamu'];
@@ -10,9 +12,6 @@ session_start();
 //      $id_kamar = $_SESSION['id_kamar'];
 
 ?>
-
-<?php include("template/header.php");?>
-<?php include("template/navbar.php");?>
 
 <link rel="stylesheet" type="text/css" href="css/datepicker1.css">
 <script type="text/javascript" src="js/bootstrap-datepicker1.js"></script>

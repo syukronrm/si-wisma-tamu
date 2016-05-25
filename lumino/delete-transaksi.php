@@ -1,6 +1,7 @@
 <?php
 	include ('connect.php');
-
+	session_start();
+	
 	$idtransaksi = $_POST['id_transaksi'];
      $query = "delete from transaksi_sewakamar where id_transaksi='$idtransaksi'";
 
